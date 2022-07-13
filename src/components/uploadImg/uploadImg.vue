@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  const config = require('../../config/config');
+  import config from '../../config/config'
   export default {
     name: "uploadImg",
     data() {

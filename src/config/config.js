@@ -85,7 +85,7 @@ const componentCNameMap = {
 };
 
 function getUuid() {
-  let seed = (Math.random() * 10000000).toFixed(0); // 随机生成一个id
+  let seed = Date.now() + (Math.random()*1000000).toFixed(2); // 随机生成一个id
   return 'market' + '_' + seed;
 }
 

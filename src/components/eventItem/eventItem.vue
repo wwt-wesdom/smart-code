@@ -52,7 +52,7 @@
   const {customToolbar} = config;
   export default {
     name: "eventItem",
-    inject: ['options', 'awardOptions', 'pageOptions'],
+    inject: ['options', 'pageOptions'],
     components: {
       uploadImg,
       tooltip,

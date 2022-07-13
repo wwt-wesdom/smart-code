@@ -1,131 +1,110 @@
 <template>
   <section class="edit-activity-common">
     <div style="margin: 30px">
-      <section v-show="activeStep == 1">
-        <el-card class="mt20">
-          <el-steps class="marketing-step mb30" :active="activeStep" :data="stepData"></el-steps>
-          <el-form ref="infoForm" :model="form" :rules="formRules" label-width="136px">
-            <el-form-item label="页面（组）名称" prop="leafletName">
-              <el-input maxlength="20" v-model="form.leafletName" width="330px" placeholder="请输入"></el-input>
-            </el-form-item>
-            <el-form-item label="备注" prop="remarks">
-              <el-input maxlength="200" v-model="form.remarks" width="330px" type="textarea" placeholder="请输入"></el-input>
-            </el-form-item>
-          </el-form>
-          <div style="padding-top: 24px;width: 600px;border-top: 1px solid #DDE3EA">
-            <el-button type="primary" @click="nextStep">下一步</el-button>
-          </div>
-        </el-card>
-      </section>
-      <section v-show="activeStep == 2">
-        <el-steps :active="activeStep"
-                  class="marketing-step mb20 mt20"
-                  :data="stepData"></el-steps>
-        <!--主体部分-->
-        <div class="content">
-          <!--左侧组件列表-->
-          <left @handleDrag="handleDrag"></left>
-          <!--中间预览模块-->
-          <div class="c-center">
-            <div class="view-page">
-              <div class="view-page-center my-container">
-                <span class="size-width">宽度：375px</span>
-                <span class="size-height">高度：667px</span>
-                <!--位置信息辅助工具，受overflow影响，放在外层-->
-                <template v-if="editItem && editItem.moving && editItem.type !== '4'">
-                  <div class="position-info" :style="getPositionStyle">
-                    <div>X：{{editItem.left}}</div>
-                    <div>Y：{{editItem.top}}</div>
-                    <div>宽：{{editItem.width}}</div>
-                    <div>高：{{editItem.height}}</div>
-                  </div>
-                </template>
-                <!--右侧操作栏-->
-                <template>
-                  <div class="undo-box">
+      <!--主体部分-->
+      <div class="content">
+        <!--左侧组件列表-->
+        <left @handleDrag="handleDrag"></left>
+        <!--中间预览模块-->
+        <div class="c-center">
+          <div class="view-page">
+            <div class="view-page-center my-container">
+              <span class="size-width">宽度：375px</span>
+              <span class="size-height">高度：667px</span>
+              <!--位置信息辅助工具，受overflow影响，放在外层-->
+              <template v-if="editItem && editItem.moving && editItem.type !== '4'">
+                <div class="position-info" :style="getPositionStyle">
+                  <div>X：{{editItem.left}}</div>
+                  <div>Y：{{editItem.top}}</div>
+                  <div>宽：{{editItem.width}}</div>
+                  <div>高：{{editItem.height}}</div>
+                </div>
+              </template>
+              <!--右侧操作栏-->
+              <template>
+                <div class="undo-box">
                   <span @click="execute('undo')"
                         class="icona-huabanbeifen16 fz16 iconfont"
                         :class="[!history.canUndo ? 'cl-eee' : 'c888']"></span>
-                    <span @click="execute('redo')"
-                          class="icona-huabanbeifen15 fz16 iconfont"
-                          :class="[!history.canRedo ? 'cl-eee' : 'c888']"></span>
-                    <span @click="deleteItem"
-                          class="icona-66666 fz16 iconfont"
-                          :class="[!showDelete ? 'cl-eee' : 'c888']"></span>
-                  </div>
-                </template>
-                <div :class="pageTitleStyle"
-                     class="view-page-center-title"
-                     @click="selectComp(activePageView.list[0])">
+                  <span @click="execute('redo')"
+                        class="icona-huabanbeifen15 fz16 iconfont"
+                        :class="[!history.canRedo ? 'cl-eee' : 'c888']"></span>
+                  <span @click="deleteItem"
+                        class="icona-66666 fz16 iconfont"
+                        :class="[!showDelete ? 'cl-eee' : 'c888']"></span>
+                </div>
+              </template>
+              <div :class="pageTitleStyle"
+                   class="view-page-center-title"
+                   @click="selectComp(activePageView.list[0])">
                 <span class="fz18 c333 fontB view-page-center-title-text">
                   {{activePageView.list[0].pageTitle}}
                 </span>
-                </div>
-                <div class="clear-scroll scroll-box"
-                     id="components-father-box">
-                  <div style="height: 10000px; position: relative; overflow-y: scroll"
-                       :style="pageStyle"
-                       @dragenter.prevent
-                       @dragover.prevent
-                       @drop="drop"
-                       id="dropBox"
-                       class="clear-scroll background-cover">
-                    <shape v-for="(item, index) in dragAbleList"
-                           style="position: absolute;"
-                           class="activeCompInteract"
-                           :key="item.id"
-                           :data-index="index"
-                           @mousedown.native="selectComp(item)"
-                           :id="item.id"
-                           :compStyle="item">
-                      <component
-                              style="pointer-events: none"
-                              :is="getComponentName(item)"
-                              :item="item">
-                      </component>
-                    </shape>
-                  </div>
-                </div>
-                <!--底部悬浮-->
-                <div v-if="bottomBtnList.length > 0"
-                     style="position:absolute;bottom: 0; left: 0; right: 0; height: 100px; overflow: hidden">
-                  <shape v-for="(item, index) in bottomBtnList"
-                         style="position:absolute; bottom: 0"
-                         class="activeBottomCompInteract"
+              </div>
+              <div class="clear-scroll scroll-box"
+                   id="components-father-box">
+                <div style="height: 10000px; position: relative; overflow-y: scroll"
+                     :style="pageStyle"
+                     @dragenter.prevent
+                     @dragover.prevent
+                     @drop="drop"
+                     id="dropBox"
+                     class="clear-scroll background-cover">
+                  <shape v-for="(item, index) in dragAbleList"
+                         style="position: absolute;"
+                         class="activeCompInteract"
                          :key="item.id"
                          :data-index="index"
                          @mousedown.native="selectComp(item)"
                          :id="item.id"
                          :compStyle="item">
-                    <c-bottom-btn style="pointer-events: none"
-                                  :item="item">
-                    </c-bottom-btn>
+                    <component
+                            style="pointer-events: none"
+                            :is="getComponentName(item)"
+                            :item="item">
+                    </component>
                   </shape>
                 </div>
               </div>
-            </div>
-            <!--多页面-新增页面-->
-            <div class="add-page-view fs-12">
-              <div v-for="(item, index) in pageViewList"
-                   class="add-page-view-item"
-                   @click="selectPageView(index)"
-                   :class="[item.active ? 'active' : '']">{{item.list[0].pageTitle}}
+              <!--底部悬浮-->
+              <div v-if="bottomBtnList.length > 0"
+                   style="position:absolute;bottom: 0; left: 0; right: 0; height: 100px; overflow: hidden">
+                <shape v-for="(item, index) in bottomBtnList"
+                       style="position:absolute; bottom: 0"
+                       class="activeBottomCompInteract"
+                       :key="item.id"
+                       :data-index="index"
+                       @mousedown.native="selectComp(item)"
+                       :id="item.id"
+                       :compStyle="item">
+                  <c-bottom-btn style="pointer-events: none"
+                                :item="item">
+                  </c-bottom-btn>
+                </shape>
               </div>
-              <span class="add-page-view-item add" @click="addPageView">
-              <i class="tzt-icon-plus"></i>
-            </span>
             </div>
           </div>
-          <!--右边设置属性-->
-          <right ref="compRight" class="bgfff" :editItem="editItem" :activityId="leafletId"></right>
+          <!--多页面-新增页面-->
+          <div class="add-page-view fs-12">
+            <div v-for="(item, index) in pageViewList"
+                 class="add-page-view-item"
+                 @click="selectPageView(index)"
+                 :class="[item.active ? 'active' : '']">{{item.list[0].pageTitle}}
+            </div>
+            <span class="add-page-view-item add" @click="addPageView">
+              <i class="tzt-icon-plus"></i>
+            </span>
+          </div>
         </div>
-        <!--底部按钮-->
-        <div class="pb30">
-          <el-button :loading="saveLoading" type="primary" @click="save(0)">保存</el-button>
-          <el-button @click="activeStep = 1">上一步</el-button>
-          <el-button :loading="previewLoading" @click="preview">预览</el-button>
-        </div>
-      </section>
+        <!--右边设置属性-->
+        <right ref="compRight" class="bgfff" :editItem="editItem" :activityId="leafletId"></right>
+      </div>
+      <!--底部按钮-->
+      <div class="pb30">
+        <el-button :loading="saveLoading" type="primary" @click="save(0)">保存</el-button>
+        <el-button @click="activeStep = 1">上一步</el-button>
+        <el-button :loading="previewLoading" @click="preview">预览</el-button>
+      </div>
 
       <!--预览-->
       <!-- <preview-page :key="Date.now()" type="1" :leafletId="leafletId" :visiable.sync="previewVisible"></preview-page>-->

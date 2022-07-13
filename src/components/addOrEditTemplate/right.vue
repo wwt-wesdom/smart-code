@@ -14,8 +14,7 @@
           <!--页面属性-->
           <component :key="editItem.id" :is="componentSetName" v-model="editItem"></component>
           <!--通用属性-->
-          <basic-settings :key="editItem.id"
-                          v-if="editItem.type !== '0'"
+          <basic-settings v-if="editItem.type !== '0'"
                           v-model="editItem"
                           @layoutTypeChange="layoutTypeChange"
                           @zIndexTypeChange="zIndexTypeChange">

@@ -47,26 +47,24 @@
         <span class="set-comp-title">布局/层级</span>
       </div>
       <el-form-item label="布局">
-        <el-icon-button
-                :content="item.content"
-                :icon="item.icon"
+        <el-button
+                type="text"
                 v-for="(item, index) in layoutTypeList"
                 @click.native="layoutTypeChange(item.type)"
-                :class="[index > 0 ? 'ml20' : '']"
+                :class="[index > 0 ? 'ml20' : '', item.icon]"
                 style="height: 36px; line-height: 36px;"
-                class="c888">
-        </el-icon-button>
+                class="c888 iconfont">
+        </el-button>
       </el-form-item>
       <el-form-item label="层级">
-        <el-icon-button
-                :content="item.content"
-                :icon="item.icon"
+        <el-button
+                type="text"
                 v-for="(item, index) in zIndexTypeList"
                 @click.native="zIndexTypeChange(item.type)"
                 style="height: 36px; line-height: 36px;"
-                :class="[index > 0 ? 'ml20' : '']"
-                class="c888">
-        </el-icon-button>
+                :class="[index > 0 ? 'ml20' : '', item.icon]"
+                class="c888 iconfont">
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
