@@ -9,6 +9,7 @@ const basicComp = [
   {title: '底部悬浮', type: '4', icon: 'icona-bianzu23'},
   {title: '锚点', type: '5', icon: 'icona-huabanbeifen6'},
   {title: '锚点copy', type: '5', icon: 'icona-huabanbeifen6'},
+  {title: '锚点copy1', type: '5', icon: 'icona-huabanbeifen6'},
 ];
 
 const complexComp = [
