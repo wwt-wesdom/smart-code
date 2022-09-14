@@ -8,7 +8,7 @@ const basicComp = [
   {title: '透明按钮', type: '15', icon: 'icona-bianzu22'},
   {title: '底部悬浮', type: '4', icon: 'icona-bianzu23'},
   {title: '锚点', type: '5', icon: 'icona-huabanbeifen6'},
-
+  {title: '锚点copy', type: '5', icon: 'icona-huabanbeifen6'},
 ];
 
 const complexComp = [
