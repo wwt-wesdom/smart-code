@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  const uploadImg = require('../uploadImg/uploadImg');
-  const colorPicker = require('../colorPicker');
+  import uploadImg from '../uploadImg/uploadImg.vue'
+  import colorPicker from '../colorPicker.vue'
   export default {
     name: "backgroundSet",
     data() {

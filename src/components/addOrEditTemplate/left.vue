@@ -18,22 +18,6 @@
       </div>
     </el-collapse-transition>
 
-    <!--<div @click="complexCompShow = !complexCompShow" class="comp-title">
-      <i class="tzt-icon-arrow-down arrow cl-888" :class="[complexCompShow ? '' : 'active']"></i>
-      <span>复合组件</span>
-    </div>
-    <el-collapse-transition>
-      <div v-show="complexCompShow" class="basic-comp">
-        <div v-for="item in complexComp"
-             class="comp-item"
-             draggable="true"
-             :data-item="JSON.stringify(item)"
-             @dragstart="dragstart">
-          <icon :class="item.icon" class="iconfont fz26" draggable="false"/>
-          <p class="center mt8">{{item.title}}</p>
-        </div>
-      </div>
-    </el-collapse-transition>-->
   </div>
 </template>
 

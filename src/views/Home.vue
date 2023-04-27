@@ -135,17 +135,17 @@
 
   import indexMixin from '../mixin/index';
   import compPositionMixin from '../mixin/compPositionMixin';
-  import left from "../components/addOrEditTemplate/left";
-  import right from "../components/addOrEditTemplate/right";
+  import left from "../components/addOrEditTemplate/left.vue";
+  import right from "../components/addOrEditTemplate/right.vue";
   import shape from '../components/shape/index'
 
-  import cImg from "../components/editActivityCommmon/comp/cImg";
-  import cText from "../components/editActivityCommmon/comp/cText";
+  import cImg from "../components/editActivityCommmon/comp/cImg.vue";
+  import cText from "../components/editActivityCommmon/comp/cText.vue";
   import cBtn from "../components/editActivityCommmon/comp/cBtn";
-  import cAnchorPoint from "../components/editActivityCommmon/comp/cAnchorPoint";
-  import cBottomBtn from "../components/editActivityCommmon/comp/cBottomBtn";
-  import cTransparentBtn from "../components/editActivityCommmon/comp/cTransparentBtn";
-  import cRichText from "../components/editActivityCommmon/comp/cRichText";
+  import cAnchorPoint from "../components/editActivityCommmon/comp/cAnchorPoint.vue";
+  import cBottomBtn from "../components/editActivityCommmon/comp/cBottomBtn.vue";
+  import cTransparentBtn from "../components/editActivityCommmon/comp/cTransparentBtn.vue";
+  import cRichText from "../components/editActivityCommmon/comp/cRichText.vue";
 
   export default {
     name: "Home",
@@ -269,8 +269,7 @@
       }
     },
     created() {
-      this.leafletId = this.$route.query.leafletId; // 活动id
-      this.editOrAddtype = this.$route.query.type; // 页面类型，编辑/新增
+
     },
     mounted() {
       // 初始化拖拽
