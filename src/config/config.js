@@ -2,6 +2,7 @@ const pageWidth = 375;
 const link = '/dist/src/marketing/index.html#/index';
 const basicComp = [
   {title: '图片', type: '1', icon: 'icona-bianzu19'},
+  {title: '图片', type: '1', icon: 'icona-bianzu19'},
   {title: '文本', type: '2', icon: 'icona-wenzi_text43x'},
   {title: '富文本', type: '16', icon: 'icona-bianzu8'},
   {title: '按钮', type: '3', icon: 'iconqiehuananniu_switch-button'},
