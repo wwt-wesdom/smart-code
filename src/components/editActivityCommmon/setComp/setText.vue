@@ -21,31 +21,24 @@
 </template>
 
 <script>
-  import backgroundSet from "../../backgroundSet/backgroundSet";
-  import config from '../../../config/config'
-  import colorPicker from "../../colorPicker";
-  export default {
-    name: "setText",
-    components: {
-      backgroundSet,
-      colorPicker,
-    },
-    data() {
-      return {
-        editItem: this.value,
-        fontSizeOptions: config.fontSizeOptions,
-      }
-    },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-  }
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import backgroundSet from "../../backgroundSet/backgroundSet";
+import config from '../../../config/config'
+import colorPicker from "../../colorPicker";
+
+export default {
+  name: "setText",
+  mixins: [setCompMixin],
+  components: {
+    backgroundSet,
+    colorPicker,
+  },
+  data() {
+    return {
+      fontSizeOptions: config.fontSizeOptions,
+    }
+  },
+}
 </script>
 
 <style scoped>

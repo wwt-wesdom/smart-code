@@ -12,23 +12,12 @@
 </template>
 
 <script>
-  export default {
-    name: "setAnchorPoint",
-    data() {
-      return {
-        editItem: this.value,
-      }
-    },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-  }
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+export default {
+  name: "setAnchorPoint",
+  mixins: [setCompMixin],
+
+}
 </script>
 
 <style scoped>

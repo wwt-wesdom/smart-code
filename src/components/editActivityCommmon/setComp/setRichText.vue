@@ -16,31 +16,23 @@
 </template>
 
 <script>
-  import config from '../../../config/config'
-  import backgroundSet from "../../backgroundSet/backgroundSet";
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import config from '../../../config/config'
+import backgroundSet from "../../backgroundSet/backgroundSet";
 
-  const customToolbar = {config};
-  export default {
-    name: "setRichText",
-    components: {
-      backgroundSet,
-    },
-    data() {
-      return {
-        editItem: this.value,
-        customToolbar: customToolbar,
-      }
-    },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-  }
+const customToolbar = {config};
+export default {
+  name: "setRichText",
+  mixins: [setCompMixin],
+  components: {
+    backgroundSet,
+  },
+  data() {
+    return {
+      customToolbar: customToolbar,
+    }
+  },
+}
 </script>
 
 <style scoped>

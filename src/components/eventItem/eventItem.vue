@@ -15,12 +15,7 @@
     <!--文字弹屏-->
     <template v-if="eventParams.event === 'textPop'">
       <el-input width="296px" maxlength="10" placeholder="请输入弹屏标题" v-model="eventParams.textPopTitle"></el-input>
-      <vue-editor
-              class="mt-10"
-              v-model="eventParams.textPopContent"
-              :toolBar="customToolbar"
-              id="pushcontainer">
-      </vue-editor>
+      <el-input class="mt-10" v-model="eventParams.textPopContent"></el-input>
     </template>
     <!--图片弹屏-->
     <template v-if="eventParams.event === 'imgPop'">

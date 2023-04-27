@@ -12,8 +12,8 @@
       <div v-show="activeIndex === '1'">
         <div v-if="editItem" class="fs-12">
           <!--页面属性-->
-<!--          <component :key="editItem.id" :is="componentSetName" v-model="editItem"></component>-->
-          <component :key="editItem.id" :is="componentSetName" v-on="editItem"></component>
+          <component :key="editItem.id" :is="componentSetName" :modelValue="editItem"></component>
+<!--          <component :key="editItem.id" :is="componentSetName" v-on="editItem"></component>-->
           <!--通用属性-->
           <basic-settings v-if="editItem.type !== '0'"
                           v-on="editItem"

@@ -36,7 +36,7 @@
     data() {
       return {
         uploadId: config.getUuid(),
-        imgSrc: this.value,
+        imgSrc: this.modelValue,
         copyImgSrc: this.value, // 用于还原
         imgWidth: 0,
         imgHeight: 0
@@ -53,7 +53,7 @@
         type: String,
         default: '104px'
       },
-      value: {
+      modelValue: {
         require: false,
         type: String,
         default: '',
@@ -147,7 +147,7 @@
           const image = new Image();
           let width = 0;
           let height = 0;
-          image.onload = function () {
+          image.onload = () => {
             width = image.width; // 获取图片宽度
             height = image.height; // 获取图片高度
             that.imgWidth = width;
@@ -155,7 +155,7 @@
             if (that.type === 'single') {
               that.imgSrc = result;
               that.$emit('change', result);
-              that.$emit('input', result);
+              that.$emit('update:modelValue', this.imgSrc)
             } else {
               let obj = {
                 result,
@@ -178,7 +178,7 @@
         this.imgWidth = 0;
         this.imgHeight = 0;
         this.$emit('change',  this.imgSrc);
-        this.$emit('input',  this.imgSrc);
+        this.$emit('update:modelValue', this.imgSrc)
       }
     },
     mounted() {

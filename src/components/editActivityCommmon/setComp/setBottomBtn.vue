@@ -3,27 +3,16 @@
 </template>
 
 <script>
-  import setBtn from "./setBtn";
-  export default {
-    name: "setBottomBtn",
-    components: {
-      setBtn,
-    },
-    data() {
-      return {
-        editItem: this.value,
-      }
-    },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-  }
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import setBtn from "./setBtn";
+
+export default {
+  name: "setBottomBtn",
+  mixins: [setCompMixin],
+  components: {
+    setBtn,
+  },
+}
 </script>
 
 <style scoped>

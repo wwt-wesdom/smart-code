@@ -15,27 +15,38 @@
 </template>
 
 <script>
-  import uploadImg from "../../uploadImg/uploadImg";
-  export default {
-    name: "setImg",
-    components: {
-      uploadImg
-    },
-    data() {
-      return {
-        editItem: this.value,
-      }
-    },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import uploadImg from "../../uploadImg/uploadImg";
+
+export default {
+  name: "setImg",
+  // mixins: [setCompMixin],
+  components: {
+    uploadImg
+  },
+  props: {
+    modelValue: {
+      require: true,
+      type: Object,
+      default: function () {
+        return {}
       },
     },
+  },
+  data() {
+    return {
+      editItem: this.modelValue,
+    }
+  },
+  watch: {
+    editItem: {
+      deep: true,
+      handler(newVal) {
+        this.$emit('update:modelValue', this.editItem)
+      }
+    },
   }
+}
 </script>
 
 <style scoped>

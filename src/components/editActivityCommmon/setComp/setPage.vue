@@ -6,7 +6,7 @@
       </div>
       <el-form-item label="页面标题">
         <el-input @change="checkPageTitle($event)" width="210px" maxlength="8"
-                   v-model="editItem.pageTitle" placeholder="请输入至少两个字符"></el-input>
+                  v-model="editItem.pageTitle" placeholder="请输入至少两个字符"></el-input>
       </el-form-item>
       <el-form-item label="背景设置">
         <background-set v-model="editItem"></background-set>
@@ -17,47 +17,36 @@
 </template>
 
 <script>
-  import backgroundSet from "../../backgroundSet/backgroundSet";
-  export default {
-    name: "setPage",
-    components: {
-      backgroundSet,
-    },
-    data() {
-      return {
-        editItem: this.value,
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import backgroundSet from "../../backgroundSet/backgroundSet";
+
+export default {
+  name: "setPage",
+  mixins: [setCompMixin],
+  components: {
+    backgroundSet,
+  },
+  methods: {
+    /**
+     * 表单验证
+     * 验证页面标题
+     */
+    checkPageTitle(value) {
+      if (!value) {
+        this.$message.error('页面标题不能为空');
+        return false;
+      } else if (value.length < 2) {
+        this.$message.error('页面标题至少两个字符');
+        return false;
+      } else if (value.length > 10) {
+        this.$message.error('页面标题最多10个字符');
+        return false;
+      } else {
+        return true;
       }
     },
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-    methods: {
-      /**
-       * 表单验证
-       * 验证页面标题
-       */
-      checkPageTitle(value) {
-        if (!value) {
-          this.$message.error('页面标题不能为空');
-          return false;
-        } else if (value.length < 2) {
-          this.$message.error('页面标题至少两个字符');
-          return false;
-        } else if (value.length > 10){
-          this.$message.error('页面标题最多10个字符');
-          return  false;
-        } else {
-          return true;
-        }
-      },
-    },
-  }
+  },
+}
 </script>
 
 <style scoped>

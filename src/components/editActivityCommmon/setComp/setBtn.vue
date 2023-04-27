@@ -41,34 +41,26 @@
 </template>
 
 <script>
-  import uploadImg from "../../uploadImg/uploadImg";
-  import config from '../../../config/config'
-  import colorPicker from "../../colorPicker";
-  import backgroundSet from "../../backgroundSet/backgroundSet";
-  export default {
-    name: "setBtn",
-    components: {
-      colorPicker,
-      backgroundSet,
-      uploadImg,
-    },
-    data() {
-      return {
-        editItem: this.value,
-        fontSizeOptions: config.fontSizeOptions,
-      }
-    },
-    created() {},
-    props: {
-      value: {
-        require: true,
-        type: Object,
-        default: function () {
-          return {}
-        },
-      },
-    },
-  }
+import setCompMixin from '../../../mixin/setCompMixin.vue'
+import uploadImg from "../../uploadImg/uploadImg";
+import config from '../../../config/config'
+import colorPicker from "../../colorPicker";
+import backgroundSet from "../../backgroundSet/backgroundSet";
+
+export default {
+  name: "setBtn",
+  mixins: [setCompMixin],
+  components: {
+    colorPicker,
+    backgroundSet,
+    uploadImg,
+  },
+  data() {
+    return {
+      fontSizeOptions: config.fontSizeOptions,
+    }
+  },
+}
 </script>
 
 <style scoped>
