@@ -1,0 +1,1 @@
+import{_ as s}from"./setCompMixin-18fc3101.js";import{_ as m,h as a,r,o as d}from"./index-1a5453e3.js";const i={name:"setBottomBtn",mixins:[s]};function l(e,t,p,_,c,f){const o=r("set-btn");return d(),a(o,{modelValue:e.editItem,"onUpdate:modelValue":t[0]||(t[0]=n=>e.editItem=n),key:e.editItem.id},null,8,["modelValue"])}const $=m(i,[["render",l]]);export{$ as default};

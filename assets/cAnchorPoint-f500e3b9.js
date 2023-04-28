@@ -1,0 +1,1 @@
+import{_ as e,p as n,a as o,t as s,o as a}from"./index-1a5453e3.js";const i={name:"cAnchorPoint",mixins:[n]},c=["id"];function r(t,p,_,d,m,f){return a(),o("div",{id:t.item.id,class:"pd-10 textCenter"},s(t.item.name),9,c)}const $=e(i,[["render",r]]);export{$ as default};
