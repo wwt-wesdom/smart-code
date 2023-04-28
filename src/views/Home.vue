@@ -135,33 +135,9 @@
 
   import indexMixin from '../mixin/index';
   import compPositionMixin from '../mixin/compPositionMixin';
-  import left from "../components/addOrEditTemplate/left.vue";
-  import right from "../components/addOrEditTemplate/right.vue";
-  import shape from '../components/shape/index'
-
-  import cImg from "../components/editActivityCommmon/comp/cImg.vue";
-  import cText from "../components/editActivityCommmon/comp/cText.vue";
-  import cBtn from "../components/editActivityCommmon/comp/cBtn";
-  import cAnchorPoint from "../components/editActivityCommmon/comp/cAnchorPoint.vue";
-  import cBottomBtn from "../components/editActivityCommmon/comp/cBottomBtn.vue";
-  import cTransparentBtn from "../components/editActivityCommmon/comp/cTransparentBtn.vue";
-  import cRichText from "../components/editActivityCommmon/comp/cRichText.vue";
 
   export default {
     name: "Home",
-    components: {
-      left,
-      right,
-      shape,
-
-      cImg,
-      cText,
-      cBtn,
-      cAnchorPoint,
-      cBottomBtn,
-      cTransparentBtn,
-      cRichText,
-    },
     provide() {
       return {
         options: this.pointOptions,

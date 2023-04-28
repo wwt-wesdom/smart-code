@@ -16,14 +16,10 @@
 
 <script>
 import setCompMixin from '../../../mixin/setCompMixin.vue'
-import uploadImg from "../../uploadImg/uploadImg";
 
 export default {
   name: "setImg",
   // mixins: [setCompMixin],
-  components: {
-    uploadImg
-  },
   props: {
     modelValue: {
       require: true,

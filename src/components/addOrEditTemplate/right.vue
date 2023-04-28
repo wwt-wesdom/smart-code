@@ -37,31 +37,11 @@
 <script>
   import backgroundSet from '../backgroundSet/backgroundSet'
   import config from '../../config/config';
-  import event from "../event/event";
-  import setPage from "../editActivityCommmon/setComp/setPage";
-  import setImg from "../editActivityCommmon/setComp/setImg";
-  import setText from "../editActivityCommmon/setComp/setText";
-  import setBtn from "../editActivityCommmon/setComp/setBtn";
-  import setBottomBtn from "../editActivityCommmon/setComp/setBottomBtn";
-  import setAnchorPoint from "../editActivityCommmon/setComp/setAnchorPoint";
-  import setRichText from "../editActivityCommmon/setComp/setRichText";
-  import basicSettings from "../editActivityCommmon/setComp/basicSettings";
+
 
   const {pageWidth} = config;
   export default {
     name: "right",
-    components: {
-      event,
-      backgroundSet,
-      setPage,
-      setImg,
-      setText,
-      setBtn,
-      setBottomBtn,
-      setAnchorPoint,
-      setRichText,
-      basicSettings,
-    },
     inject: ['app'],
     data() {
       return {

@@ -22,17 +22,11 @@
 
 <script>
 import setCompMixin from '../../../mixin/setCompMixin.vue'
-import backgroundSet from "../../backgroundSet/backgroundSet";
 import config from '../../../config/config'
-import colorPicker from "../../colorPicker";
 
 export default {
   name: "setText",
   mixins: [setCompMixin],
-  components: {
-    backgroundSet,
-    colorPicker,
-  },
   data() {
     return {
       fontSizeOptions: config.fontSizeOptions,

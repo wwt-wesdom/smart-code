@@ -18,15 +18,12 @@
 <script>
 import setCompMixin from '../../../mixin/setCompMixin.vue'
 import config from '../../../config/config'
-import backgroundSet from "../../backgroundSet/backgroundSet";
 
 const customToolbar = {config};
 export default {
   name: "setRichText",
   mixins: [setCompMixin],
-  components: {
-    backgroundSet,
-  },
+
   data() {
     return {
       customToolbar: customToolbar,

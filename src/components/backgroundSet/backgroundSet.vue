@@ -16,18 +16,12 @@
 </template>
 
 <script>
-  import uploadImg from '../uploadImg/uploadImg.vue'
-  import colorPicker from '../colorPicker.vue'
   export default {
     name: "backgroundSet",
     data() {
       return {
         editItem: this.value
       }
-    },
-    components: {
-      uploadImg,
-      colorPicker,
     },
     props: {
       value: {

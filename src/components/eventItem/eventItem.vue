@@ -40,18 +40,11 @@
 </template>
 
 <script>
-
-  import uploadImg from "../uploadImg/uploadImg";
-  import tooltip from "../tooltip/tooltip";
-  import config from '../../config/config'
+ import config from '../../config/config'
   const {customToolbar} = config;
   export default {
     name: "eventItem",
     inject: ['options', 'pageOptions'],
-    components: {
-      uploadImg,
-      tooltip,
-    },
     data() {
       return {
         eventParams: this.value,

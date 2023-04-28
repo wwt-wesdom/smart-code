@@ -12,15 +12,8 @@
 </template>
 
 <script>
-  import uploadImg from "../uploadImg/uploadImg";
-  import eventItem from "../eventItem/eventItem";
-
   export default {
     name: "event",
-    components: {
-      uploadImg,
-      eventItem,
-    },
     data() {
       return {
         eventParams: this.value,

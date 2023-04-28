@@ -18,14 +18,10 @@
 
 <script>
 import setCompMixin from '../../../mixin/setCompMixin.vue'
-import backgroundSet from "../../backgroundSet/backgroundSet";
 
 export default {
   name: "setPage",
   mixins: [setCompMixin],
-  components: {
-    backgroundSet,
-  },
   methods: {
     /**
      * 表单验证
